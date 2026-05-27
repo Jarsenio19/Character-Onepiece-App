@@ -1,10 +1,10 @@
 import Footer from '../Components/Footer/Footer'
-import Hero from '../Components/Hero.jsx/Hero'
+import WantedPosters from '../Components/WantedPosters/Index'
 
 const Landing = () => {
   return (
     <>
-      <Hero />
+      <WantedPosters />
       <Footer />
     </>
   )

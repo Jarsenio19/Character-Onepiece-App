@@ -13,13 +13,8 @@ const SearchResult = () => {
       try {
         const jsonResponse = await fetch('https://api.api-onepiece.com/v2/characters/en')
         const result = await jsonResponse.json()
+        setChars(result)
 
-        const buildChars = result.map((item) => ({
-          id: item.id,
-          name: item.name,
-          ...item,
-        }))
-        setChars(buildChars)
       } catch (error) {
         console.log('ERROR!', error);
       }
@@ -29,8 +24,6 @@ const SearchResult = () => {
 
   const searchResults = chars.filter(char =>
     char.name?.toLowerCase().includes(query.toLowerCase()))
-
-  console.log(searchResults);
 
   const navigate = useNavigate()
   const openModal = () => {
@@ -48,14 +41,14 @@ const SearchResult = () => {
 
               <div
                 className='box'
-                key={item.id}
+                key={index}
                 onClick={() => navigate('/modal')}>
                 <h4>Wanted</h4>
 
                 <img src="" alt="image" />
                 <h4>DEAD OR ALIVE</h4>
-                <h3 key={index}>{item.name}</h3>
-                <h2 key={index}>{item.bounty}</h2>
+                <h3>{item.name}</h3>
+                <h2>{item.bounty}</h2>
               </div>
             )
             )}
